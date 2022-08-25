@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
-<body>
-    
-<header>
-    <button>Favorites</button>
-    <p>MOVIE FINDER PRO</p>
-    <!--start as hidden, appear once first search is done-->
-    <form action=""> 
-        <input type="text">
-        <button>Submit</button>
-    </form>
-</header>
 
-<!--initial search feild-->
-<div id="initial-serach">
+<body>
+
+
+
+    <header class="hero">
+        <div class="hero-body columns has-background-dark">
+            <button class="column button is-danger is-large is-3">Favorites</button>
+            <div
+                class="column is-full-width has-text-weight-bold is-6 is-size-1 has-text-centered has-text-danger">
+                MOVIE
+                FINDER PRO</div>
+
+            <form class="is-3" style="visibility: hidden;">
+                <input class="input" type="text">
+                <button class="button is-danger">Submit</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="field is grouped">
+        
+    </div>
+
+    
+
+    </header>
+
+    <div class="columns">
+        <form class="column is-half is-offset-one-quarter has-text-centered">
+            <div class="field">
+                <label class="label is-size-3">Search</label>
+                <div class="control">
+                    <input class="input" type="search" placeholder="Title Here">
+                    <button class="button is-danger">Submit</button>
+                </div>
+            </div>
+    </div>
+    </div>
+    <!--initial search feild ALSO SEARCH TYPO-->
+    <!-- <div class="column has-text-centered">
     <form action="">
         <input type="text">
         <button>Submit</button>
     </form>
-</div>
+</div> -->
 
-<!--container for created elements-->
-<div id="content-container">
-</div>
+    <!--container for created elements-->
+    <div id="content-container">
+    </div>
 
 
-<footer></footer>
+    <footer></footer>
 
-<script src="./assests/js/script.js"></script>
+    <script src="./assests/js/script.js"></script>
 </body>
+
 </html>
->>>>>>> afe901c4a457c38fa18ca94c128788641ad8107d
+
