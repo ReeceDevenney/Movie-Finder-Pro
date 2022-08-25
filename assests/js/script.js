@@ -26,30 +26,35 @@ var desc = "action, thriller, animal lover"
 var sites = ["netflix", "hulu", "crunchy roll"]
 var largeContainer = document.querySelector("#content-container")
 
-var createCards = function() {
-var containerEl = document.createElement("div");
-var imgEl = document.createElement("img");
-imgEl.setAttribute("src", img);
-containerEl.appendChild(imgEl);
 
-var nameEl = document.createElement("div");
-nameEl.innerHTML = title;
-containerEl.appendChild(nameEl);
+    var createCards = function() {
+        //for (var i = 0; i < 5; i++){
+        var containerEl = document.createElement("div");
+        var imgEl = document.createElement("img");
+        imgEl.setAttribute("src", img);
+        containerEl.appendChild(imgEl);
+        
+        var nameEl = document.createElement("div");
+        nameEl.innerHTML = title;
+        containerEl.appendChild(nameEl);
+        
+        var descEl = document.createElement("div");
+        descEl.innerHTML = desc;
+        containerEl.appendChild(descEl);
+        console.log("i")
+        var sitesEl = document.createElement("ul") 
+            for (var i = 0; i < sites.length; i++){
+                var site = document.createElement("li");
+                site.innerHTML = sites[i];
+                sitesEl.appendChild(site);
+            }
+            containerEl.appendChild(sitesEl);
+        
+            largeContainer.appendChild(containerEl);  
+        }
+        
 
-var descEl = document.createElement("div");
-descEl.innerHTML = desc;
-containerEl.appendChild(descEl);
 
-var sitesEl = document.createElement("ul") 
-    for (var i = 0; i < sites.length; i++){
-        var site = document.createElement("li");
-        site.innerHTML = sites[i];
-        sitesEl.appendChild(site);
-    }
-    containerEl.appendChild(sitesEl);
-
-largeContainer.appendChild(containerEl);
-}
 
 createCards()
 
