@@ -18,4 +18,14 @@ var fetchCall = function (movie) {
             })
         }
 
-fetchCall("inception")
+// fetchCall("inception")
+
+// variables
+var img = "https://via.placeholder.com/150"
+var name = "Blood Diamond"
+var desc = "loremipsumkuydktud"
+var sites = ["Netflix", "Hulu", "HBO"]
+// to be edited
+var createCards = function() {
+
+}
