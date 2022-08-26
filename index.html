@@ -5,33 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assests/css/style.css">
+    
 </head>
 <body>
     
-<header>
-    <button>Favorites</button>
-    <p>MOVIE FINDER PRO</p>
-    <!--start as hidden, appear once first search is done-->
-    <form action=""> 
-        <input type="text">
-        <button>Submit</button>
-    </form>
+<header class="hero">
+    <div class="hero-body columns">
+        <button class="column is-3 button is-warning">Favorites</button>
+        <p class="column is-6">MOVIE FINDER PRO</p>
+        <!--start as hidden, appear once first search is done-->
+        <form class="column is-3"> 
+            <input type="text">
+            <button>Submit</button>
+        </form>
+    </div>
 </header>
 
 <!--initial search feild-->
 <div id="initial-serach">
-    <form action="">
-        <input type="text">
+    <form>
+        <input class="main-input" type="text">
         <button>Submit</button>
     </form>
 </div>
 
 <!--container for created elements-->
-<div id="content-container">
+<div class="columns" id="content-container">
 </div>
 
 
-<footer></footer>
+<footer class="">
+
+
+
+</footer>
 
 <script src="./assests/js/script.js"></script>
 </body>

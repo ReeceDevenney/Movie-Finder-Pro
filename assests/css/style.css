@@ -1,0 +1,24 @@
+body {
+    max-width: 100%;
+}
+
+.column {
+    text-align: center;
+}
+
+#initial-serach {
+    display: flex;
+    justify-content: center;
+}
+
+header {
+    background-color: black;
+    color: white;
+}
+
+footer {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background: black;
+}
