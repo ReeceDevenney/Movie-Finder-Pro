@@ -20,37 +20,77 @@ var fetchCall = function (movie) {
 
 // fetchCall("inception")
 
-var img = "https://via.placeholder.com/150"
-var title = "title"
-var desc = "asdfkal;sdjkf;lasjkdf;"
-var sites = ["ane", "asdf", "asdfasd"]
 
+var img = "https:via.placeholder.com/2500"
+var title = "John Wick"
+var desc = "action, thriller, animal lover"
+var sites = ["netflix", "hulu", "crunchy roll"]
 var largeContainerEl = document.querySelector("#content-container")
 
-var createCards = function () {
+var createCards = function (event) {
+    largeContainerEl.innerHTML = ""
+    event.preventDefault()
+
+    document.getElementById("header-serach").style.visibility = "visible"
+    document.getElementById("main-search").style.display = "none"
+
+
+
     for (var i = 0; i < 5; i++) {
         var containerEl = document.createElement("div");
-        containerEl.classList.add("column")
+        containerEl.classList.add("column", "has-text-centered", "card", "has-background-danger", "mx-5", "mt-5")
 
-        var titleEl = document.createElement("div")
-        titleEl.innerHTML = title
-        containerEl.appendChild(titleEl)
+        var imgEl = document.createElement("img");
+        imgEl.setAttribute("src", img);
+        imgEl.classList.add("card-image", "mx-auto")
+        containerEl.appendChild(imgEl);
 
-        console.log(sites.length)
+        var nameEl = document.createElement("div");
+        nameEl.innerHTML = title + i;
+        nameEl.classList.add("card-content", "has-text-left", "has-text-weight-bold", "is-size-4")
+        containerEl.appendChild(nameEl);
+
+        var descEl = document.createElement("div");
+        descEl.innerHTML = "Description: " + '"' + desc + '"';
+        descEl.classList.add("card-content", "has-text-left", "py-0")
+        containerEl.appendChild(descEl);
+
         var sitesEl = document.createElement("ul")
         for (var k = 0; k < sites.length; k++) {
-            var siteEl = document.createElement("li")
-            siteEl.innerHTML = sites[i]
-            sitesEl.appendChild(siteEl)
+            var site = document.createElement("li");
+            site.innerHTML = sites[k];
+            sitesEl.appendChild(site);
         }
-        containerEl.appendChild(sitesEl)
+        sitesEl.classList.add("card-content", "has-text-left")
+        containerEl.appendChild(sitesEl);
 
-        largeContainerEl.appendChild(containerEl)
+        var favEl = document.createElement("button")
+        favEl.innerHTML = "Favorite"
+        favEl.classList.add("button", "is-warning")
+        containerEl.appendChild(favEl)
+
+        largeContainerEl.appendChild(containerEl);
     }
-    
 }
-    
+// testing to get favorites button to work
+var cardEl = document.querySelector(".card")
+var test = function (event) {
+    if (event.target.classList.contains("button")) {
+        if (event.target.innerHTML === "Favorite") {
+            event.target.innerHTML = "Unfavorite"
+        } else if (event.target.innerHTML === "Unfavorite"){
+            event.target.innerHTML = "Favorite"
+        }
+        console.log(event.target.parentElement)
+    }
+
+}
+var mainSubmitEl = document.querySelector("#main-button")
+var headerSubmitEl = document.querySelector("#header-button")
+
+headerSubmitEl.addEventListener("click", createCards)
+mainSubmitEl.addEventListener("click", createCards)
+largeContainerEl.addEventListener("click", test)
 
 
 
-createCards()
