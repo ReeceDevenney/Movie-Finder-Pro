@@ -21,7 +21,7 @@ var fetchCall = function (movie) {
 // fetchCall("inception")
 
 
-var img = "https:via.placeholder.com/2500"
+var img = "https:via.placeholder.com/1500"
 var title = "John Wick"
 var desc = "action, thriller, animal lover"
 var sites = ["netflix", "hulu", "crunchy roll"]
@@ -38,7 +38,7 @@ var createCards = function (event) {
 
     for (var i = 0; i < 5; i++) {
         var containerEl = document.createElement("div");
-        containerEl.classList.add("column", "has-text-centered", "card", "has-background-danger", "mx-5", "mt-5")
+        containerEl.classList.add("column", "has-text-centered", "card", "has-background-danger", "m-5", "is-3")
 
         var imgEl = document.createElement("img");
         imgEl.setAttribute("src", img);
@@ -71,18 +71,42 @@ var createCards = function (event) {
 
         largeContainerEl.appendChild(containerEl);
     }
+
 }
 // testing to get favorites button to work
+var testArray = []
+
 var cardEl = document.querySelector(".card")
 var test = function (event) {
     if (event.target.classList.contains("button")) {
         if (event.target.innerHTML === "Favorite") {
             event.target.innerHTML = "Unfavorite"
-        } else if (event.target.innerHTML === "Unfavorite"){
+        } else if (event.target.innerHTML === "Unfavorite") {
             event.target.innerHTML = "Favorite"
         }
-        console.log(event.target.parentElement)
     }
+    var image = (event.target.parentElement.children[0].src)
+    var title = (event.target.parentElement.children[1].innerHTML)
+    var description = (event.target.parentElement.children[2].innerHTML)
+    var services = []
+    var i = 0
+    while (event.target.parentElement.children[3].children[i]) {
+        service = (event.target.parentElement.children[3].children[i].innerHTML)
+        services.push(service)
+        i++
+    }
+
+    var testing = {
+        image: image,
+        title: title,
+        description: description,
+        services: services
+    }
+    testArray.push(testing)
+    console.log(testArray)
+    //finds the location in the array for the specified title, use to cut that out of the array when unfavoriting
+    console.log(testArray.findIndex(object => {return object.title === "John Wick1"}))
+    
 
 }
 var mainSubmitEl = document.querySelector("#main-button")
