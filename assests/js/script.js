@@ -30,6 +30,9 @@ var largeContainer = document.querySelector("#content-container")
     var createCards = function() {
         for (var i = 0; i < 5; i++) {
             var containerEl = document.createElement("div");
+            containerEl.classList.add("column","has-text-centered")
+
+
             var imgEl = document.createElement("img");
             imgEl.setAttribute("src", img);
             containerEl.appendChild(imgEl);
@@ -41,7 +44,7 @@ var largeContainer = document.querySelector("#content-container")
             var descEl = document.createElement("div");
             descEl.innerHTML = desc;
             containerEl.appendChild(descEl);
-            console.log("i")
+           
             var sitesEl = document.createElement("ul") 
                 for (var k = 0; k < sites.length; k++){
                     var site = document.createElement("li");
