@@ -28,7 +28,6 @@ var largeContainer = document.querySelector("#content-container")
 
 
     var createCards = function() {
-        //for (var i = 0; i < 5; i++){
         var containerEl = document.createElement("div");
         var imgEl = document.createElement("img");
         imgEl.setAttribute("src", img);
