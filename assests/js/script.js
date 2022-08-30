@@ -75,6 +75,7 @@ var createCards = function (data) {
 }
 
 var createFavs = function() {
+    largeContainerEl.innerHTML=""
     document.getElementById("header-serach").style.visibility = "visible"
     document.getElementById("main-search").style.display = "none"
 
@@ -93,7 +94,7 @@ var createFavs = function() {
         containerEl.appendChild(nameEl);
 
         var descEl = document.createElement("div");
-        descEl.innerHTML = "Description: " + '"' + favoriteMovies[i].description + '"';
+        descEl.innerHTML = favoriteMovies[i].description;
         descEl.classList.add("card-content")
         containerEl.appendChild(descEl);
 
