@@ -1,15 +1,16 @@
 ## Movie Finder Pro
 
-For this project, we created a Movie Finder Pro website using two server-side APIs (IMBD-API and Watchmode). Users can enter a movie title and receive recommendations of similar movies with a movie poster, basic description, and a list of streaming platforms where the movies are available. Users can save movie titles to their Favorites profile by using the favorite button. 
+For this project, we created a Movie Finder Pro website using two server-side APIs (IMBd-API and Watchmode). Users can enter a movie title and receive recommendations of similar movies with a movie poster, basic description, and a list of streaming platforms where the movies are available. Users can save movie titles to their Favorites profile by using the favorite button. 
 
 View our project on Github: https://reecedevenney.github.io/Movie-Finder-Pro/
 
 ## Challenges
 
+One challenge our group faced was working with the limitations on APIs. We found that many public APIs have call limits. We worked within this limit by minimizing the amount of calls made during the testing of the website.
 
 ## User Story
 
-As a user, I want to enter a movie title in the search bar to receive similar movie recommendations. I want to save movie recommendations to my Favorites profile using the favorite button. I want to be able to unsave movies from my Favorites profile using the unfavorite button.
+As a user, I want to enter a movie title in the search bar to receive similar movie recommendations, including movie posters, descriptions, and streaming platforms where the movie is available. I want to save movie recommendations to my Favorites profile using the favorite button. I want to be able to unsave movies from my Favorites profile using the unfavorite button.
 
 
 ## Acceptance Criteria
@@ -37,5 +38,5 @@ For this project, we used:
 - Git
 - Github Pages
 - Bulma
-- IMBD-API
+- IMBd-API
 - Watchmode API
