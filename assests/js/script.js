@@ -36,18 +36,21 @@ var largeContainerEl = document.querySelector("#content-container")
         document.getElementById("main-search").style.display = "none"
         for (var i = 0; i < 5; i++) {
         var containerEl = document.createElement("div");
-            containerEl.classList.add("column", "has-text-centered")
+            containerEl.classList.add("column", "has-text-centered", "card")
 
         var imgEl = document.createElement("img");
         imgEl.setAttribute("src", img);
+        imgEl.classList.add("card-image")
         containerEl.appendChild(imgEl);
         
         var nameEl = document.createElement("div");
         nameEl.innerHTML = title;
+        nameEl.classList.add("card-content")
         containerEl.appendChild(nameEl);
         
         var descEl = document.createElement("div");
         descEl.innerHTML = desc;
+        descEl.classList.add("card-content")
         containerEl.appendChild(descEl);
 
         var sitesEl = document.createElement("ul") 
@@ -56,9 +59,10 @@ var largeContainerEl = document.querySelector("#content-container")
                 site.innerHTML = sites[k];
                 sitesEl.appendChild(site);
             }
+            sitesEl.classList.add("card-content")
             containerEl.appendChild(sitesEl);
         
-            largeContainer.appendChild(containerEl);  }
+            largeContainerEl.appendChild(containerEl);  }
         }
         
 
