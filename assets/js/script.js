@@ -62,9 +62,17 @@ var createCards = function (data) {
         sitesEl.classList.add("card-content")
         containerEl.appendChild(sitesEl);
 
+
+        var chosenFavorite = favoriteMovies.findIndex(favoriteMovies => {return favoriteMovies.title === data.original_title})
         var favoriteEl = document.createElement("button")
-        favoriteEl.innerHTML = "Favorite"
         favoriteEl.classList.add("button", "is-warning")
+        if(chosenFavorite === -1) {
+            favoriteEl.innerHTML = "Favorite"
+        } else {
+            favoriteEl.innerHTML = "Unfavorite"
+        }
+        
+        
         containerEl.appendChild(favoriteEl)
 
         largeContainerEl.appendChild(containerEl);
@@ -106,9 +114,13 @@ var createFavs = function() {
         sitesEl.classList.add("card-content")
         containerEl.appendChild(sitesEl);
 
+
         var favoriteEl = document.createElement("button")
-        favoriteEl.innerHTML = "Favorite"
         favoriteEl.classList.add("button", "is-warning")
+        favoriteEl.innerHTML = "Unfavorite"
+
+        
+        
         containerEl.appendChild(favoriteEl)
 
         largeContainerEl.appendChild(containerEl);
@@ -120,6 +132,7 @@ var createFavs = function() {
 var saveFavorites = function (event) {
     // switches text of the button PUT EVERYTHING UNDER THE IF STATMENT, MAKE SURE EVENT ONLY HAPPENS ON BUTTON PRESS
     if (event.target.classList.contains("button")) {
+        // grabs info of the movie off of the cards text based on the button selected
         var image = (event.target.parentElement.children[0].src)
         var title = (event.target.parentElement.children[1].innerHTML)
         var description = (event.target.parentElement.children[2].innerHTML)
@@ -131,10 +144,11 @@ var saveFavorites = function (event) {
             services.push(service)
             i++
         }
-
+        // gives the index value of the selected movie in the master array, returns -1 if it is not in the array
         var chosenFavorite = favoriteMovies.findIndex(favoriteMovies => {return favoriteMovies.title === title})
 
         if (chosenFavorite === -1) {
+            // save the selected movie if it is not already in the master array
             event.target.innerHTML = "Favorite"
             var favoriteMovie = {
                 image: image,
@@ -144,15 +158,16 @@ var saveFavorites = function (event) {
             }
             favoriteMovies.push(favoriteMovie)
 
-        
             localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies))
-        } else {
+
             event.target.innerHTML = "Unfavorite"
+        } else {
+            // button removes the saved movie from the favories list if it is the array
+            favoriteMovies.splice(chosenFavorite, 1)
+            localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies))
+
+            event.target.innerHTML = "Favorite"
         }
-    // variables for the content of the selectetd box
-   
-    // temp object to fill and push to the array
-    
     }
 }
 
