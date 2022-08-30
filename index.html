@@ -5,52 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Finder Pro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
-
-
-
-    <header class="hero mb-3">
+    <header class="hero">
         <div class="hero-body columns has-background-dark">
-            <button class="column m-auto button is-danger is-large is-3">Favorites</button>
-            <div
-                class="column m-auto is-full-width has-text-weight-bold is-6 is-size-1 has-text-centered has-text-danger">
-                MOVIE
-                FINDER PRO</div>
+            <button class="column button is-danger is-large is-3 m-auto">Favorites</button>
+            <div class="column is-full-width has-text-weight-bold is-6 is-size-1 has-text-centered has-text-danger m-auto">
+                MOVIE FINDER PRO
+            </div>
+            <form class="is-2 m-auto is-flex" style="visibility: hidden;" id="header-serach">
+                <input id="header-input" class="input" type="text">
+                <button id="header-button" class="button is-danger is-justify-contenet-center">Submit</button>
 
-
-            <form id="header-search" class=" m-auto is-3 is-flex" style="visibility: hidden;">
-
-                <input class="input" type="text">
-                <button id="header-button" class="button is-danger">Submit</button>
             </form>
         </div>
     </header>
 
 
-    
-
-
-    <div class="columns">
-        <form id="main-search" class="column is-half is-offset-one-quarter has-text-centered">
-            <div class="field">
+    <div class="columns mt-4">
+        <form class="column is-half is-offset-one-quarter has-text-centered">
+            <div class="field" id="main-search">
                 <label class="label is-size-3">Search</label>
                 <div class="control">
-                    <input class="input" type="search" placeholder="Title Here">
+                    <input id="main-input" class="input mb-3" type="search" placeholder="Title Here">
+
                     <button id="main-button" class="button is-danger">Submit</button>
                 </div>
             </div>
     </div>
-    </div>
 
-   
 
-    <div id="content-container"class= "columns is-justify-content-center">
-
-    </div>
+    <!--container for created elements-->
+    <div class="columns is-flex is-flex-wrap-wrap is-justify-content-center" id="content-container"></div>
 
 
     <footer></footer>
