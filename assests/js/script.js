@@ -1,8 +1,10 @@
 var mainSubmitEl = document.querySelector("#main-button")
 var headerSubmitEl = document.querySelector("#header-button")
+var favBtnEl = document.querySelector("#fav-btn")
 var mainInputEl = document.querySelector("#main-input")
 var headerInputEl = document.querySelector("#header-input")
 var largeContainerEl = document.querySelector("#content-container")
+var cardEl = document.querySelector(".card")
 
 // favoriteMovies to get favorites button to work
 var favoriteMovies = []
@@ -67,8 +69,51 @@ var createCards = function (data) {
 
 }
 
+var createFavs = function() {
+    document.getElementById("header-serach").style.visibility = "visible"
+    document.getElementById("main-search").style.display = "none"
 
-var cardEl = document.querySelector(".card")
+    for (var i = 0; i<favoriteMovies.length; i++) {
+        var containerEl = document.createElement("div");
+        containerEl.classList.add("column", "card", "has-background-danger", "m-5")
+
+        var imgEl = document.createElement("img");
+        imgEl.setAttribute("src", favoriteMovies[i].image);
+        imgEl.classList.add("card-image", "mx-auto")
+        containerEl.appendChild(imgEl);
+
+        var nameEl = document.createElement("div");
+        nameEl.innerHTML = favoriteMovies[i].title;
+        nameEl.classList.add("card-content", "has-text-weight-bold", "is-size-4")
+        containerEl.appendChild(nameEl);
+
+        var descEl = document.createElement("div");
+        descEl.innerHTML = "Description: " + '"' + favoriteMovies[i].description + '"';
+        descEl.classList.add("card-content")
+        containerEl.appendChild(descEl);
+
+        console.log(favoriteMovies[i].services)
+        var sitesEl = document.createElement("ul")
+        for (var k = 0; k < favoriteMovies[i].services.length; k++) {
+            var site = document.createElement("li");
+            console.log("hi")
+            site.innerHTML = favoriteMovies[i].services[k];
+            sitesEl.appendChild(site);
+        }
+        sitesEl.classList.add("card-content")
+        containerEl.appendChild(sitesEl);
+
+        var favoriteEl = document.createElement("button")
+        favoriteEl.innerHTML = "Favorite"
+        favoriteEl.classList.add("button", "is-warning")
+        containerEl.appendChild(favoriteEl)
+
+        largeContainerEl.appendChild(containerEl);
+    }
+}
+
+
+
 var saveFavorites = function (event) {
     // switches text of the button PUT EVERYTHING UNDER THE IF STATMENT, MAKE SURE EVENT ONLY HAPPENS ON BUTTON PRESS
     if (event.target.classList.contains("button")) {
@@ -144,4 +189,5 @@ var fetchCall = function (movie) {
 headerSubmitEl.addEventListener("click", readHeaderTitle)
 mainSubmitEl.addEventListener("click", readMainTitle)
 largeContainerEl.addEventListener("click", saveFavorites)
+favBtnEl.addEventListener("click", createFavs)
 loadSave()
