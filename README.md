@@ -30,7 +30,7 @@ As a user, I want to enter a movie title in the search bar to receive similar mo
 ## Mock Up
 The website is depicted in the image below.
 
-<img src=".image.png"></img>
+![image](./assets/image.png)git 
 
 ## Development Environment:
 For this project, we used:
