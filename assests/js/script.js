@@ -36,20 +36,20 @@ var largeContainerEl = document.querySelector("#content-container")
         document.getElementById("main-search").style.display = "none"
         for (var i = 0; i < 5; i++) {
         var containerEl = document.createElement("div");
-            containerEl.classList.add("column", "has-text-centered", "card")
+            containerEl.classList.add("column", "card", "m-5", "has-background-danger")
 
         var imgEl = document.createElement("img");
         imgEl.setAttribute("src", img);
-        imgEl.classList.add("card-image")
+        imgEl.classList.add("card-image", "mx-auto")
         containerEl.appendChild(imgEl);
         
         var nameEl = document.createElement("div");
         nameEl.innerHTML = title;
-        nameEl.classList.add("card-content")
+        nameEl.classList.add("card-content", "is-size-4")
         containerEl.appendChild(nameEl);
         
         var descEl = document.createElement("div");
-        descEl.innerHTML = desc;
+        descEl.innerHTML = "description: " + '"'+ desc +'"';
         descEl.classList.add("card-content")
         containerEl.appendChild(descEl);
 
