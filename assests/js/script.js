@@ -67,6 +67,7 @@ var largeContainerEl = document.querySelector("#content-container")
             containerEl.appendChild(favoriteEl)
         
             largeContainerEl.appendChild(containerEl);  }
+
         }
         
 
