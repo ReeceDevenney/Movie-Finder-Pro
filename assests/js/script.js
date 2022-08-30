@@ -61,6 +61,10 @@ var largeContainerEl = document.querySelector("#content-container")
             }
             sitesEl.classList.add("card-content")
             containerEl.appendChild(sitesEl);
+            var favoriteEl = document.createElement("button")
+            favoriteEl.innerHTML = "favorite"
+            favoriteEl.classList.add("button", "is-warning")
+            containerEl.appendChild(favoriteEl)
         
             largeContainerEl.appendChild(containerEl);  }
         }
