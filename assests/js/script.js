@@ -9,10 +9,7 @@ var cardEl = document.querySelector(".card")
 // favoriteMovies to get favorites button to work
 var favoriteMovies = []
 
-var img = "https:via.placeholder.com/1500"
-var title = "John Wick"
-var desc = "action, thriller, animal lover"
-var sites = ["netflix", "hulu", "crunchy roll"]
+
 
 var readMainTitle = function(event) {
     event.preventDefault()
@@ -98,11 +95,11 @@ var createFavs = function() {
         descEl.classList.add("card-content")
         containerEl.appendChild(descEl);
 
-        console.log(favoriteMovies[i].services)
+
         var sitesEl = document.createElement("ul")
         for (var k = 0; k < favoriteMovies[i].services.length; k++) {
             var site = document.createElement("li");
-            console.log("hi")
+
             site.innerHTML = favoriteMovies[i].services[k];
             sitesEl.appendChild(site);
         }
@@ -136,7 +133,7 @@ var saveFavorites = function (event) {
         }
 
         var chosenFavorite = favoriteMovies.findIndex(favoriteMovies => {return favoriteMovies.title === title})
-        console.log(chosenFavorite)
+
         if (chosenFavorite === -1) {
             event.target.innerHTML = "Favorite"
             var favoriteMovie = {
@@ -146,7 +143,7 @@ var saveFavorites = function (event) {
                 services: services
             }
             favoriteMovies.push(favoriteMovie)
-            console.log(favoriteMovies)
+
         
             localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies))
         } else {
@@ -163,7 +160,7 @@ var loadSave = function () {
     var loadMovies = JSON.parse(localStorage.getItem("favoriteMovies"))
         if (loadMovies) {
             favoriteMovies = loadMovies
-            console.log(favoriteMovies)
+
         }
 }
 
@@ -174,15 +171,15 @@ var fetchCall = function (movie) {
     largeContainerEl.innerHTML = ""
     fetch(url).then(function (response) {
         response.json().then(function (data) {
-            console.log(data)
+
 
             fetch(`https://api.watchmode.com/v1/title/${data.results[0].id}/details/?apiKey=OnX6Kqfuj26gStUuLHip5UgQYIBVuO7zFbxPETZB&append_to_response=sources`).then(function (resp) {
                 resp.json().then(function (data) {
-                    console.log(data)
+
                     for (var z = 0; z < 5; z++) {
                         fetch(`https://api.watchmode.com/v1/title/${data.similar_titles[z]}/details/?apiKey=OnX6Kqfuj26gStUuLHip5UgQYIBVuO7zFbxPETZB&append_to_response=sources`).then(function (resp) {
                             resp.json().then(function (data) {
-                                console.log(data)
+
                                 createCards(data)
                             })
                         })
