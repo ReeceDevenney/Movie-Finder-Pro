@@ -1,15 +1,30 @@
-
 var mainSubmitEl = document.querySelector("#main-button")
 var headerSubmitEl = document.querySelector("#header-button")
 var mainInputEl = document.querySelector("#main-input")
 var headerInputEl = document.querySelector("#header-input")
 var largeContainerEl = document.querySelector("#content-container")
 
+// favoriteMovies to get favorites button to work
+var favoriteMovies = []
+
 var img = "https:via.placeholder.com/1500"
 var title = "John Wick"
 var desc = "action, thriller, animal lover"
 var sites = ["netflix", "hulu", "crunchy roll"]
 
+var readMainTitle = function(event) {
+    event.preventDefault()
+    var movie = mainInputEl.value.trim()
+
+    fetchCall(movie)
+}
+
+var readHeaderTitle = function(event) {
+    event.preventDefault()
+    var movie = headerInputEl.value.trim()
+
+    fetchCall(movie)
+}
 
 var createCards = function (data) {
 
@@ -51,59 +66,54 @@ var createCards = function (data) {
         largeContainerEl.appendChild(containerEl);
 
 }
-// favoriteMovies to get favorites button to work
-var favoriteMovies = []
+
 
 var cardEl = document.querySelector(".card")
-var test = function (event) {
+var saveFavorites = function (event) {
     // switches text of the button PUT EVERYTHING UNDER THE IF STATMENT, MAKE SURE EVENT ONLY HAPPENS ON BUTTON PRESS
     if (event.target.classList.contains("button")) {
-        if (event.target.innerHTML === "Favorite") {
+        var image = (event.target.parentElement.children[0].src)
+        var title = (event.target.parentElement.children[1].innerHTML)
+        var description = (event.target.parentElement.children[2].innerHTML)
+        //loops to grab all of the listed service options
+        var services = []
+        var i = 0
+        while (event.target.parentElement.children[3].children[i]) {
+            service = (event.target.parentElement.children[3].children[i].innerHTML)
+            services.push(service)
+            i++
+        }
+
+        var chosenFavorite = favoriteMovies.findIndex(favoriteMovies => {return favoriteMovies.title === title})
+        console.log(chosenFavorite)
+        if (chosenFavorite === -1) {
             event.target.innerHTML = "Unfavorite"
-        } else if (event.target.innerHTML === "Unfavorite") {
+            var favoriteMovie = {
+                image: image,
+                title: title,
+                description: description,
+                services: services
+            }
+            favoriteMovies.push(favoriteMovie)
+            console.log(favoriteMovies)
+        
+            localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies))
+        } else {
             event.target.innerHTML = "Favorite"
         }
-    }
     // variables for the content of the selectetd box
-    var image = (event.target.parentElement.children[0].src)
-    var title = (event.target.parentElement.children[1].innerHTML)
-    var description = (event.target.parentElement.children[2].innerHTML)
-    //loops to grab all of the listed service options
-    var services = []
-    var i = 0
-    while (event.target.parentElement.children[3].children[i]) {
-        service = (event.target.parentElement.children[3].children[i].innerHTML)
-        services.push(service)
-        i++
-    }
+   
     // temp object to fill and push to the array
-    var favoriteMovie = {
-        image: image,
-        title: title,
-        description: description,
-        services: services
-    }
-    favoriteMovies.push(favoriteMovie)
-    console.log(favoriteMovies)
-    //finds the location in the array for the specified title, use to cut that out of the array when unfavoriting
-    var chosenFavorite = favoriteMovies.findIndex(favoriteMovies => {return favoriteMovies.title === title})
-    console.log(chosenFavorite)
     
-
+    }
 }
 
-var readMainTitle = function(event) {
-    event.preventDefault()
-    var movie = mainInputEl.value.trim()
-
-    fetchCall(movie)
-}
-
-var readHeaderTitle = function(event) {
-    event.preventDefault()
-    var movie = headerInputEl.value.trim()
-
-    fetchCall(movie)
+var loadSave = function () {
+    var loadMovies = JSON.parse(localStorage.getItem("favoriteMovies"))
+        if (loadMovies) {
+            favoriteMovies = loadMovies
+            console.log(favoriteMovies)
+        }
 }
 
 
@@ -131,7 +141,7 @@ var fetchCall = function (movie) {
     })
 }
 
-//fetchCall("inception")
 headerSubmitEl.addEventListener("click", readHeaderTitle)
 mainSubmitEl.addEventListener("click", readMainTitle)
-largeContainerEl.addEventListener("click", test)
+largeContainerEl.addEventListener("click", saveFavorites)
+loadSave()
