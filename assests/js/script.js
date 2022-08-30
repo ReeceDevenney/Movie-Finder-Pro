@@ -52,10 +52,15 @@ var createCards = function (data) {
         containerEl.appendChild(descEl);
 
         var sitesEl = document.createElement("ul")
+        var sourcesArr = []
         for (var k = 0; k < data.sources.length; k++) {
-            var site = document.createElement("li");
-            site.innerHTML = data.sources[k].name;
-            sitesEl.appendChild(site);
+            if (sourcesArr.includes(data.sources[k].name) === false){
+                var site = document.createElement("li");
+                site.innerHTML = data.sources[k].name;
+                sitesEl.appendChild(site);
+                sourcesArr.push(data.sources[k].name)
+            }
+            
         }
         sitesEl.classList.add("card-content")
         containerEl.appendChild(sitesEl);
@@ -132,7 +137,7 @@ var saveFavorites = function (event) {
         var chosenFavorite = favoriteMovies.findIndex(favoriteMovies => {return favoriteMovies.title === title})
         console.log(chosenFavorite)
         if (chosenFavorite === -1) {
-            event.target.innerHTML = "Unfavorite"
+            event.target.innerHTML = "Favorite"
             var favoriteMovie = {
                 image: image,
                 title: title,
@@ -144,7 +149,7 @@ var saveFavorites = function (event) {
         
             localStorage.setItem("favoriteMovies", JSON.stringify(favoriteMovies))
         } else {
-            event.target.innerHTML = "Favorite"
+            event.target.innerHTML = "Unfavorite"
         }
     // variables for the content of the selectetd box
    
