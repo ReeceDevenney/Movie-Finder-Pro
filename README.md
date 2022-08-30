@@ -2,7 +2,7 @@
 
 For this project, we created a Movie Finder Pro website using two server-side APIs (IMBd-API and Watchmode). Users can enter a movie title and receive recommendations of similar movies with a movie poster, basic description, and a list of streaming platforms where the movies are available. Users can save movie titles to their Favorites profile by using the favorite button. 
 
-View our project on Github: https://reecedevenney.github.io/Movie-Finder-Pro/
+<a href="https://reecedevenney.github.io/Movie-Finder-Pro/">View our deployed project here.</a>
 
 ## Challenges
 
